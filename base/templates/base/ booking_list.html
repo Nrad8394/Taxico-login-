@@ -1,0 +1,166 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TAXICO - Home</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<a class="navbar-brand" href="#">TAXICO</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	  <span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarNav">
+		{% if request.user.is_authenticated %}
+		
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item active">
+				<p style='margin-right:20px;' > Welcome {{request.user}} </p>
+			</li>
+			<li class="nav-item">
+				<a href="{% url 'logout' %}">Logout</a>
+			</li>
+		</ul>
+		
+		{% else %}
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item active">
+				<a href="{% url 'login' %}">Login</a>
+			</li>
+			
+		</ul>
+		
+		{% endif %}
+	  
+	</div>	
+	
+</nav>
+
+
+
+<!-- Jumbotron -->
+<div class="jumbotron jumbotron-fluid bg-light">
+  <div class="container">
+    <h1 class="display-4">Get a ride with TAXICO</h1>
+    <p class="lead">TAXICO is the easiest way to get around town. Download our app and get started today!</p>
+    <a href="#" class="btn btn-primary btn-lg">Download App</a>
+  </div>
+</div>
+
+<!-- Services -->
+<div class="container">
+	<div class="row text-center my-5">
+		<div class="col-lg-4 col-md-6 col-sm-12">
+			<i class="fas fa-taxi fa-3x mb-3"></i>
+			<h4>Taxi Service</h4>
+			<p>Our taxi service is available 24/7, so you can always get a ride when you need one.</p>
+		</div>
+		<div class="col-lg-4 col-md-6 col-sm-12">
+			<i class="fas fa-car fa-3x mb-3"></i>
+			<h4>Private Car Service</h4>
+			<p>Need a private car for a special occasion? We've got you covered.</p>
+		</div>
+		<div class="col-lg-4 col-md-6 col-sm-12">
+			<i class="fas fa-shuttle-van fa-3x mb-3"></i>
+			<h4>Shuttle Service</h4>
+			<p>Traveling with a group? Our shuttle service can accommodate up to 12 passengers.</p>
+		</div>
+	</div>
+</div>
+
+<!-- Book a Ride -->
+<div class="container bg-light py-5">
+	<div class="row">
+		<div class="col-lg-6">
+			<h3>Book a Ride</h3>
+			<form>
+				<div class="form-group">
+					<label for="pickup">Pickup Location:</label>
+					<input type="text" class="form-control" id="pickup">
+				</div>
+				<div class="form-group">
+					<label for="dropoff">Dropoff Location:</label>
+					<input type="text" class="form-control" id="dropoff">
+				</div>
+				<div class="form-group">
+					<label for="date">Date:</label>
+					<input type="date" class="form-control" id="date">
+				</div>
+				<div class="form-group">
+					<label for="time">Time:</label>
+					<input type="time" class="form-control" id="time">
+				</div>
+				<div class="form-group">
+					<label for="passengers">Passengers:</label>
+					<input type="number" class="form-control" id="passengers">
+				</div>
+				<button type="submit" class="btn btn-primary">Book Now</button>
+			</form>
+		</div>
+		<div class="col-lg-6 d-flex align-items-center justify-content-center">
+			<img src= "https://images.unsplash.com/photo-1613638377394-281765460baa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8dGF4aXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="taxi" class="img-fluid">
+		</div>
+	</div>
+	<!-- Hire Drivers -->
+<div class="container my-5">
+	<div class="row">
+		<div class="col-lg-6 d-flex align-items-center justify-content-center">
+			<img src="https://images.unsplash.com/photo-1482029255085-35a4a48b7084?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fHRheGl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" alt="driver" class="img-fluid">
+		</div>
+		<div class="col-lg-6">
+			<h3>Hire Drivers</h3>
+			<p>Interested in driving for TAXICO? Fill out the form below and we'll be in touch.</p>
+			<form>
+				<div class="form-group">
+					<label for="name">Name:</label>
+					<input type="text" class="form-control" id="name">
+				</div>
+				<div class="form-group">
+					<label for="email">Email:</label>
+					<input type="email" class="form-control" id="email">
+				</div>
+				<div class="form-group">
+					<label for="phone">Phone:</label>
+					<input type="tel" class="form-control" id="phone">
+				</div>
+				<div class="form-group">
+					<label for="location">Location:</label>
+					<input type="text" class="form-control" id="location">
+				</div>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		</div>
+	</div>
+</div>
+<!-- Footer -->
+<footer class="bg-dark text-light">
+	<div class="container">
+		<div class="row py-4">
+			<div class="col-lg-6 col-md-6 col-sm-12">
+				<p>&copy; 2023 TAXICO</p>
+			</div>
+			<div class="col-lg-6 col-md-6 col-sm-12">
+				<ul class="nav justify-content-center justify-content-md-end">
+					<li class="nav-item">
+						<a class="nav-link" href="#">Privacy Policy</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Terms of Service</a>
+					</li>
+					<li class="nav-item">
+						<a class= "nav-link" href="#">Contact Us</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</footer>
